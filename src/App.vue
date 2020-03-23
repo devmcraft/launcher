@@ -3,7 +3,6 @@
     <v-system-bar height="40" color="black" dark style="-webkit-app-region: drag" lights-out>
       <v-spacer></v-spacer>0x77dev Minecraft Launcher [ALPHA]
       <v-spacer></v-spacer>
-      <v-icon>mdi-wifi-strength-3</v-icon>
     </v-system-bar>
 
     <v-content>
