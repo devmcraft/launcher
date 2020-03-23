@@ -59,10 +59,10 @@ export default {
         memory: {
           max: "6000",
           min: "4000"
-        },
-        server: {
-          host: "minecraft.0x77.page"
         }
+        // server: {
+        // host: "minecraft.0x77.page"
+        // }
       };
 
       launcher.launch(opts);
