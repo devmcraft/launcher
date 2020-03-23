@@ -13,7 +13,10 @@
   "main": "background.js",
   "dependencies": {
     "core-js": "^3.6.4",
+    "mc-server-status": "^1.2.0",
     "minecraft-launcher-core": "^3.12.0",
+    "minecraft-ping": "^1.0.0",
+    "minecraft-query": "^1.0.9",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
     "vuetify": "^2.2.11",
