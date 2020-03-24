@@ -14,13 +14,15 @@
     "build": "vue-cli-service build",
     "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",
-    "publish": "yarn electron:build -p always",
+    "publish": "yarn electron:generate-icon && yarn electron:build -p always",
+    "electron:generate-icons": "electron-icon-builder --input=./public/icon.png --output=build --flatten",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"
   },
   "main": "background.js",
   "dependencies": {
     "core-js": "^3.6.4",
+    "electron-icon-builder": "^1.0.2",
     "electron-updater": "^4.2.5",
     "mc-server-status": "^1.2.0",
     "minecraft-launcher-core": "https://github.com/devmcraft/launcher-core.git#master",

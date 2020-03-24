@@ -6,6 +6,7 @@ import {
   installVueDevtools
 } from 'vue-cli-plugin-electron-builder/lib'
 import { autoUpdater } from "electron-updater"
+import path from 'path'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
@@ -25,9 +26,10 @@ function createWindow() {
     titleBarStyle: "hiddenInset",
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    icon: path.join(__static, 'icon.png')
   })
-
+  win.setMenuBarVisibility(false)
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL)

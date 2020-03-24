@@ -87,9 +87,18 @@ export default {
       const { Client, Authenticator } = require("minecraft-launcher-core");
       const { join } = require("path");
       const launcher = new Client();
+      try {
+        const authorization = Authenticator.getAuth(
+          this.username,
+          this.password
+        );
+      } catch (error) {
+        alert(error);
+        throw new Error(error);
+      }
       let opts = {
         clientPackage: null,
-        authorization: Authenticator.getAuth(this.username, this.password),
+        authorization,
         root: join(require("os").homedir(), ".minecraft"),
         version: {
           number: "1.15.2",

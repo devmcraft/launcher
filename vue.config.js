@@ -9,10 +9,8 @@ module.exports = {
         appId: "page.a0x77.minecraft.launcher",
         productName: "0x77dev Minecraft Launcher",
         copyright: "Misha Marinenko",
-        asar: true,
-        asarUnpack: ['java-service'],
-        win: {
-          target: "portable",
+        mac: {
+          target: "dmg"
         },
         linux: {
           target: "AppImage",
@@ -23,10 +21,7 @@ module.exports = {
         },
         appImage: {
           artifactName: "app.bin"
-        },
-        extraResources: [
-          'java-service'
-        ]
+        }
       },
     },
     configureWebpack: {
