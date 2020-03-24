@@ -21,7 +21,7 @@
     "core-js": "^3.6.4",
     "electron-updater": "^4.2.5",
     "mc-server-status": "^1.2.0",
-    "minecraft-launcher-core": "^3.12.0",
+    "minecraft-launcher-core": "https://github.com/devmcraft/launcher-core.git#master",
     "minecraft-ping": "^1.0.0",
     "minecraft-query": "^1.0.9",
     "rimraf": "^3.0.2",

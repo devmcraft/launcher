@@ -5735,10 +5735,9 @@ mimic-response@^1.0.0, mimic-response@^1.0.1:
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-1.0.1.tgz#4923538878eef42063cb8a3e3b0798781487ab1b"
   integrity sha512-j5EctnkH7amfV/q5Hgmoal1g2QHFJRraOtmx0JpIqkxhBhI/lJSl1nMpQ45hVarwNETOoWEimndZ4QK0RHxuxQ==
 
-minecraft-launcher-core@^3.12.0:
-  version "3.12.0"
-  resolved "https://registry.yarnpkg.com/minecraft-launcher-core/-/minecraft-launcher-core-3.12.0.tgz#d25c9c4a085609acfabd87afd4c50107d1069719"
-  integrity sha512-PQt/4GSXHKCaUW+ldWktsbb7lhJQPPNAzaOFAFeMpB8UgjiAzy3HPqaBWMlz5baEjodOn7QT575/1t8e8Zv5VA==
+"minecraft-launcher-core@https://github.com/devmcraft/launcher-core.git#master":
+  version "3.12.1"
+  resolved "https://github.com/devmcraft/launcher-core.git#ca90a1eeb2333426e52e867364b8cf3141cb554b"
   dependencies:
     adm-zip "^0.4.13"
     checksum "^0.1.1"
