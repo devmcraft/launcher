@@ -1,6 +1,6 @@
 {
   "name": "@0x77dev/mclauncher",
-  "displayName": "0x77dev Minecraft Launcher"
+  "displayName": "0x77dev Minecraft Launcher",
   "description": "0x77dev Minecraft Launcher",
   "version": "0.1.4",
   "private": true,
