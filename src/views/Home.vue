@@ -66,16 +66,14 @@ export default {
         // host: "minecraft.0x77.page"
         // }
       };
-      require("rimraf")(join(require("os").homedir(), ".minecraft"), () => {
-        Authenticator.signOut();
-        launcher.launch(opts);
-      });
+      launcher.launch(opts);
       launcher.on("debug", e => (vm.status = e));
       launcher.on("data", e => (vm.status = e));
       launcher.on("progress", e => (vm.progress = e.total));
     },
     open(url) {
-      window.open(url, "_system");
+      const { shell } = require("electron");
+      shell.openExternal(url);
     }
   },
   watch: {
