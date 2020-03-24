@@ -23,7 +23,8 @@ export default {
 <style>
 html,
 body,
-main {
+main,
+.theme--light.v-application {
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.25);
 }
