@@ -92,30 +92,30 @@ export default {
           this.username,
           this.password
         );
+        let opts = {
+          clientPackage: null,
+          authorization,
+          root: join(require("os").homedir(), ".minecraft"),
+          version: {
+            number: "1.15.2",
+            type: "release"
+          },
+          memory: {
+            max: this.max,
+            min: this.min
+          },
+          server: {
+            host: "minecraft.0x77.page"
+          }
+        };
+        launcher.launch(opts);
+        launcher.on("debug", e => (vm.status = e));
+        launcher.on("data", e => (vm.status = e));
+        launcher.on("progress", e => (vm.progress = e.total));
       } catch (error) {
         alert(error);
         throw new Error(error);
       }
-      let opts = {
-        clientPackage: null,
-        authorization,
-        root: join(require("os").homedir(), ".minecraft"),
-        version: {
-          number: "1.15.2",
-          type: "release"
-        },
-        memory: {
-          max: this.max,
-          min: this.min
-        },
-        server: {
-          host: "minecraft.0x77.page"
-        }
-      };
-      launcher.launch(opts);
-      launcher.on("debug", e => (vm.status = e));
-      launcher.on("data", e => (vm.status = e));
-      launcher.on("progress", e => (vm.progress = e.total));
     },
     open(url) {
       const { shell } = require("electron");
