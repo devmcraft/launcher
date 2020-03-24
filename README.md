@@ -3,6 +3,7 @@ Made specially for [My Minecraft Sever](https://minecraft.0x77.page)
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/devmcraft/launcher)
 [![Download](https://img.shields.io/badge/Download-Latest%20Release-black)](https://github.com/devmcraft/launcher/releases)
+![Build/release](https://github.com/devmcraft/launcher/workflows/Build/release/badge.svg)
 
 ## Preview
 [![Releases](preview.png)](https://github.com/devmcraft/launcher/releases)
