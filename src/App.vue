@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-system-bar height="40" color="black" dark style="-webkit-app-region: drag" lights-out>
-      <v-spacer></v-spacer>0x77dev Minecraft Launcher [BETA]
+      <v-spacer></v-spacer>0x77dev Minecraft Launcher
       <v-spacer></v-spacer>
     </v-system-bar>
 
