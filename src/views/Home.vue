@@ -18,8 +18,18 @@
                 name="password"
                 type="password"
               />
+              <v-subheader>Your credentials will be shared only with mojang!</v-subheader>
+              <v-divider></v-divider>
+              <v-subheader>Memory Settings</v-subheader>
+              <v-row justify="space-around">
+                <v-col cols="12">
+                  <v-slider thumb-label="always" v-model="min" min="512" max="768" label="Min"></v-slider>
+                </v-col>
+                <v-col cols="12">
+                  <v-slider thumb-label="always" v-model="max" min="512" max="8000" label="Max"></v-slider>
+                </v-col>
+              </v-row>
             </v-form>
-            <v-subheader>Your credentials will be shared only with mojang!</v-subheader>
           </v-card-text>
           <v-card-actions>
             <v-btn @click="open('https://minecraft.0x77.page')" color="primary">/op @p</v-btn>
@@ -42,7 +52,9 @@ export default {
     status: "",
     progress: 0,
     username: localStorage.username || "",
-    password: localStorage.username || ""
+    password: localStorage.username || "",
+    min: 1000,
+    max: 2000
   }),
   methods: {
     async start() {
@@ -59,12 +71,12 @@ export default {
           type: "release"
         },
         memory: {
-          max: "6000",
-          min: "4000"
+          max: this.max,
+          min: this.min
+        },
+        server: {
+          host: "minecraft.0x77.page"
         }
-        // server: {
-        // host: "minecraft.0x77.page"
-        // }
       };
       launcher.launch(opts);
       launcher.on("debug", e => (vm.status = e));
