@@ -15,6 +15,7 @@
                 name="login"
                 type="text"
               />
+              <v-checkbox v-model="autoconnect" class="mx-2" label="Auto Connect to Sever 🔌"></v-checkbox>
               <v-checkbox v-model="isMojang" class="mx-2" label="Mojang Account 🔐"></v-checkbox>
               <v-text-field
                 v-if="isMojang"
@@ -52,16 +53,25 @@
                     </v-row>
                   </v-expansion-panel-content>
                 </v-expansion-panel>
+                <v-expansion-panel v-if="logShow">
+                  <v-expansion-panel-header>Log ⚙️</v-expansion-panel-header>
+                  <v-expansion-panel-content>
+                    <v-row justify="space-around">
+                      <v-col cols="12">
+                        <v-textarea row-height="10" auto-grow outlined :value="status"></v-textarea>
+                      </v-col>
+                    </v-row>
+                  </v-expansion-panel-content>
+                </v-expansion-panel>
               </v-expansion-panels>
             </v-form>
           </v-card-text>
           <v-card-actions>
             <v-btn @click="open('https://minecraft.0x77.page')" text>server website 👥</v-btn>
             <v-spacer />
-            <v-subheader style="max-width: 420px;">{{status}}</v-subheader>
             <v-progress-circular v-if="progress > 0" :value="progress" max="1100"></v-progress-circular>
             <v-spacer />
-            <v-btn @click="start" color="primary">Start Gaming 🔫</v-btn>
+            <v-btn :disabled="minecraftStarted" @click="start" color="primary">Start Gaming 🔫</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -79,7 +89,9 @@ export default {
     password: localStorage.password || "",
     min: 1000,
     max: 2000,
-    isMojang: false
+    minecraftStarted: false,
+    isMojang: false,
+    autoconnect: false
   }),
   methods: {
     async start() {
@@ -103,11 +115,19 @@ export default {
           memory: {
             max: this.max,
             min: this.min
+          },
+          server: {
+            host: "minecraft.0x77.page"
           }
         };
-        launcher.launch(opts);
-        launcher.on("debug", e => (vm.status = e));
-        launcher.on("data", e => (vm.status = e));
+        if (!this.autoconnect) delete opts.server;
+        const minecraft = launcher.launch(opts);
+        launcher.on("close", e => (vm.minecraftStarted = flase));
+        this.minecraftStarted = true;
+        this.logShow = true;
+        this.status = "";
+        launcher.on("debug", e => (vm.status = vm.status + "\n" + e));
+        launcher.on("data", e => (vm.status = vm.status + "\n" + e));
         launcher.on("progress", e => (vm.progress = e.total));
       } catch (error) {
         alert(error);

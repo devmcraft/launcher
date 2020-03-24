@@ -22,6 +22,8 @@ function createWindow() {
   win = new BrowserWindow({
     width: 1200,
     height: 800,
+    minHeight: 600,
+    minWidth: 800,
     title: "0x77dev Minecraft Launcher",
     titleBarStyle: "hiddenInset",
     webPreferences: {
