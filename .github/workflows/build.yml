@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [windows-latest, macos-latest]
+        os: [windows-latest, macos-latest, ubuntu-latest]
 
     steps:
       - name: Check out Git repository
@@ -24,7 +24,7 @@ jobs:
       - run: yarn run publish
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      
+
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
         with:

@@ -4,40 +4,64 @@
       <v-col cols="12" sm="8" md="8">
         <v-card class="elevation-12">
           <v-toolbar color="primary" dark flat>
-            <v-toolbar-title>Mojang account</v-toolbar-title>
+            <v-toolbar-title>Hey There 👋</v-toolbar-title>
             <v-spacer />
           </v-toolbar>
           <v-card-text>
             <v-form>
-              <v-text-field v-model="username" label="Login" name="login" type="text" />
-
               <v-text-field
+                v-model="username"
+                label="Username or Email 👤"
+                name="login"
+                type="text"
+              />
+              <v-checkbox v-model="isMojang" class="mx-2" label="Mojang Account 🔐"></v-checkbox>
+              <v-text-field
+                v-if="isMojang"
                 v-model="password"
                 id="password"
                 label="Password"
                 name="password"
                 type="password"
               />
-              <v-subheader>Your credentials will be shared only with mojang!</v-subheader>
+              <v-subheader v-if="isMojang">Your credentials will be shared only with mojang!</v-subheader>
               <v-divider></v-divider>
-              <v-subheader>Memory Settings</v-subheader>
-              <v-row justify="space-around">
-                <v-col cols="12">
-                  <v-slider thumb-label="always" v-model="min" min="512" max="768" label="Min"></v-slider>
-                </v-col>
-                <v-col cols="12">
-                  <v-slider thumb-label="always" v-model="max" min="512" max="8000" label="Max"></v-slider>
-                </v-col>
-              </v-row>
+              <v-expansion-panels flat>
+                <v-expansion-panel>
+                  <v-expansion-panel-header>Memory Settings ⚙️</v-expansion-panel-header>
+                  <v-expansion-panel-content>
+                    <v-row justify="space-around">
+                      <v-col cols="12">
+                        <v-slider
+                          thumb-label="always"
+                          v-model="min"
+                          min="512"
+                          max="768"
+                          label="Min"
+                        ></v-slider>
+                      </v-col>
+                      <v-col cols="12">
+                        <v-slider
+                          thumb-label="always"
+                          v-model="max"
+                          min="512"
+                          max="8000"
+                          label="Max"
+                        ></v-slider>
+                      </v-col>
+                    </v-row>
+                  </v-expansion-panel-content>
+                </v-expansion-panel>
+              </v-expansion-panels>
             </v-form>
           </v-card-text>
           <v-card-actions>
-            <v-btn @click="open('https://minecraft.0x77.page')" color="primary">/op @p</v-btn>
+            <v-btn @click="open('https://minecraft.0x77.page')" text>server website 👥</v-btn>
             <v-spacer />
             <v-subheader style="max-width: 420px;">{{status}}</v-subheader>
             <v-progress-circular v-if="progress > 0" :value="progress" max="1100"></v-progress-circular>
             <v-spacer />
-            <v-btn @click="start" color="primary">Start</v-btn>
+            <v-btn @click="start" color="primary">Start Gaming 🔫</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -52,9 +76,10 @@ export default {
     status: "",
     progress: 0,
     username: localStorage.username || "",
-    password: localStorage.username || "",
+    password: localStorage.password || "",
     min: 1000,
-    max: 2000
+    max: 2000,
+    isMojang: false
   }),
   methods: {
     async start() {
