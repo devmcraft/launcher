@@ -1,13 +1,16 @@
 'use strict'
 
-import { app, protocol, BrowserWindow } from 'electron'
+import { app, protocol, BrowserWindow, ipcMain } from 'electron'
 import {
   createProtocol,
   installVueDevtools
 } from 'vue-cli-plugin-electron-builder/lib'
 import { autoUpdater } from "electron-updater"
 import path from 'path'
-
+import store from './store'
+const { Client } = require("minecraft-launcher-core");
+const api = require("express")();
+const launcher = new Client();
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -94,3 +97,12 @@ if (isDevelopment) {
     })
   }
 }
+
+api.get("/", () => {
+  launcher.launch(store.state.minecraft.opts);
+  launcher.on('debug', (e) => console.log(e));
+  launcher.on('data', (e) => console.log(e));
+  launcher.on('progress', (e) => store.state.minecraft.progress = e);
+})
+
+api.listen(1033);
