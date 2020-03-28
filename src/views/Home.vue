@@ -80,6 +80,7 @@
 </template>
 
 <script>
+import clone from "../async_clone";
 export default {
   name: "Home",
   data: () => ({
@@ -91,7 +92,8 @@ export default {
     max: 2000,
     minecraftStarted: false,
     isMojang: false,
-    autoconnect: false
+    autoconnect: false,
+    logShow: false
   }),
   methods: {
     async start() {
@@ -99,6 +101,8 @@ export default {
       const { Client, Authenticator } = require("minecraft-launcher-core");
       const { join } = require("path");
       const launcher = new Client();
+      this.minecraftStarted = true;
+      this.logShow = true;
       try {
         const authorization = Authenticator.getAuth(
           this.username,
@@ -109,9 +113,14 @@ export default {
           authorization,
           root: join(require("os").homedir(), ".minecraft"),
           version: {
-            number: "1.15.2",
+            number: "1.12.2",
             type: "release"
           },
+          forge: join(
+            require("os").homedir(),
+            ".minecraft",
+            "forge-1.12.2-14.23.5.2768-universal.jar"
+          ),
           memory: {
             max: this.max,
             min: this.min
@@ -121,10 +130,18 @@ export default {
           }
         };
         if (!this.autoconnect) delete opts.server;
+        this.status = this.status + "\n" + "Updating Mods";
+        await clone(
+          "devmcraft/modpack",
+          join(require("os").homedir(), ".minecraft", "mods")
+        );
+        this.status = this.status + "\n" + "Updating Forge";
+        await clone(
+          "devmcraft/minecraft-forge",
+          join(require("os").homedir(), ".minecraft")
+        );
         const minecraft = launcher.launch(opts);
         launcher.on("close", e => (vm.minecraftStarted = flase));
-        this.minecraftStarted = true;
-        this.logShow = true;
         this.status = "";
         launcher.on("debug", e => (vm.status = vm.status + "\n" + e));
         launcher.on("data", e => (vm.status = vm.status + "\n" + e));

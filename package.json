@@ -2,7 +2,7 @@
   "name": "@0x77dev/mclauncher",
   "displayName": "0x77dev Minecraft Launcher",
   "description": "0x77dev Minecraft Launcher",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "private": true,
   "author": "Misha Marinenko <0x77dev@protonmail.com>",
   "repository": {
@@ -22,6 +22,7 @@
   "main": "background.js",
   "dependencies": {
     "core-js": "^3.6.4",
+    "download-git-repo": "^3.0.2",
     "electron-icon-builder": "^1.0.2",
     "electron-updater": "^4.2.5",
     "mc-server-status": "^1.2.0",
