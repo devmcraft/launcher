@@ -17,6 +17,11 @@
       <v-content>
         <router-view></router-view>
       </v-content>
+      <v-snackbar v-model="showUpdateMessage">
+        {{ updateMessage }}
+        <br />
+        <v-progress-linear :value="updateProgress"></v-progress-linear>
+      </v-snackbar>
       <v-footer :fixed="true">
         <v-avatar @click="open('https://github.com/devmcraft')" height="30" width="30">
           <img src="https://cdn.svgporn.com/logos/github-icon.svg" alt="Github" />
@@ -29,12 +34,10 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "App",
-
-  data: () => ({
-    //
-  }),
+  computed: mapState(["updateMessage", "showUpdateMessage", "updateProgress"]),
   methods: {
     open(url) {
       const { shell } = require("electron");

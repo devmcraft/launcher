@@ -6,6 +6,7 @@ import {
   installVueDevtools
 } from 'vue-cli-plugin-electron-builder/lib'
 import { autoUpdater } from "electron-updater"
+import store from "./store"
 import path from 'path'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
@@ -94,3 +95,22 @@ if (isDevelopment) {
     })
   }
 }
+
+
+autoUpdater.on('error', (err) => {
+  store.state.showUpdateMessage = true;
+  store.state.updateMessage = "Update Error";
+  console.error(err);
+})
+
+autoUpdater.on('download-progress', (progressObj) => {
+  store.state.showUpdateMessage = true;
+  store.state.updateMessage = "Downloading Update";
+  store.state.updateProgress = progressObj.percent;
+
+})
+
+autoUpdater.on('update-downloaded', () => {
+  store.state.showUpdateMessage = true;
+  store.state.updateMessage = "Update Downloaded, please restart app.";
+})
