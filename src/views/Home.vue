@@ -124,7 +124,7 @@ export default {
       this.logShow = true;
       let authorization = null;
       try {
-        Authenticator.getAuth(this.username, this.password);
+        authorization = Authenticator.getAuth(this.username, this.password);
       } catch (error) {
         this.status = this.status + "\n" + error;
         alert("Authention error " + error);
