@@ -27,7 +27,7 @@
           <img src="https://cdn.svgporn.com/logos/github-icon.svg" alt="Github" />
         </v-avatar>
         <v-spacer></v-spacer>
-        <div>Misha Marinenko &copy; {{ new Date().getFullYear() }}</div>
+        <div>Misha Marinenko @0x77dev &copy; {{ new Date().getFullYear() }}</div>
       </v-footer>
     </v-app>
   </div>
