@@ -115,9 +115,11 @@ export default {
       let vm = this;
       const { Client, Authenticator } = require("minecraft-launcher-core");
       const { join } = require("path");
-      const { mkdirSync } = require("fs");
+      const { mkdirSync, existsSync } = require("fs");
       const launcher = new Client();
-      mkdirSync(join(require("os").homedir(), ".minecraft"));
+      if (!existsSync(join(require("os").homedir(), ".minecraft"))) {
+        mkdirSync(join(require("os").homedir(), ".minecraft"));
+      }
       this.minecraftStarted = true;
       this.logShow = true;
       let authorization = null;
