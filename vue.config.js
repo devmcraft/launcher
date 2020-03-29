@@ -1,3 +1,5 @@
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+
 module.exports = {
   "transpileDependencies": [
     "vuetify"
@@ -26,7 +28,13 @@ module.exports = {
     },
     configureWebpack: {
       devtool: 'source-map',
-      plugins: [new (require("webpackbar"))({ name: "0x77dev Minecraft Launcher" })]
+      plugins: [
+        new (require("webpackbar"))({ name: "0x77dev Minecraft Launcher" }),
+        new MonacoWebpackPlugin({
+          // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
+          languages: ['javascript']
+        })
+      ]
     }
   }
 }
