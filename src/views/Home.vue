@@ -137,13 +137,13 @@ export default {
           authorization,
           root: join(require("os").homedir(), ".minecraft"),
           version: {
-            number: "1.12.2",
+            number: "1.14.4",
             type: "release"
           },
           forge: join(
             require("os").homedir(),
             ".minecraft",
-            "forge-1.12.2-14.23.5.2768-universal.jar"
+            "forge-installer.jar"
           ),
           memory: {
             max: this.max,
