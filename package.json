@@ -2,7 +2,7 @@
   "name": "@0x77dev/mclauncher",
   "displayName": "0x77dev Minecraft Launcher",
   "description": "0x77dev Minecraft Launcher",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "private": true,
   "author": "Misha Marinenko <0x77dev@protonmail.com>",
   "repository": {
