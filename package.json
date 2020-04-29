@@ -51,7 +51,7 @@
     "@vue/cli-plugin-router": "~4.2.0",
     "@vue/cli-plugin-vuex": "~4.2.0",
     "@vue/cli-service": "~4.2.0",
-    "electron": "^6.0.0",
+    "electron": "^8.2.4",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",
     "vue-cli-plugin-electron-builder": "~1.4.6",
